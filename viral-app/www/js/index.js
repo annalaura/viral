@@ -19,33 +19,43 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        console.log('aaaa');
         this.bindEvents();
     },
+
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        // app.receivedEvent('deviceready');
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
+
+    receivedEvent: function(id, data) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        if (id === 'location') {
+            console.log(data.coords.latitutde);
+            console.log(data.coords.longitude);
+            var locationFoundElement = parentElement.querySelector('.locationFound');
+            var lat = parentElement.querySelector('.latitude');
+            var long = parentElement.querySelector('.longitude');
 
-        console.log('Received Event: ' + id);
+            locationFoundElement.setAttribute('style', 'display:block;color:black');
+            lat.innerHTML = data.coords.latitude;
+            long.innerHTML = data.coords.longitude;
+        } else if (id === 'error') {
+            console.log(data.message);
+            parentElement.innerHTML = data.message;
+        }
     }
 };
 
 app.initialize();
+
+navigator.geolocation.getCurrentPosition(function(location) {
+    app.receivedEvent('location', location);
+}, function(err) {
+    app.receivedEvent('error', err);
+});
