@@ -18,7 +18,7 @@ http.listen(process.env.PORT || 3000, function(){
   console.log('listening on *:3000');
 });
 
-MongoClient.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/viral', function(err, db) {
+MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/viral', function(err, db) {
   if (err) {
     throw err;
   }
