@@ -1,54 +1,44 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <title>Viral</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="location">
-                <div class="locationFound">Location:</div>
-                <div class="initiallatitude"></div>
-                <div class="initiallongitude"></div>
-                <div class="latitude"></div>
-                <div class="longitude"></div>
-                <div class="distance"></div>
+        <div class="tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#tab1">User</a></li>
+                <li><a href="#tab2">Virus</a></li>
+                <li><a href="#tab3">Scores</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+                <div id="tab1" class="tab active">
+                    <h3>Your virus information</h3>
+                    <p>Virus Name : "VirusName"</p>
+                    <p> Number of People Affected: "" </p>
+
+
+                </div>
+
+                <div id="tab2" class="tab">
+                    <h3>Customize your virus</h3>
+                    <form action="demo_form.asp">Virus Name <input type="text" name="VirusName"><br>
+                    <p>Range</p>
+                    <input id="rangeSlider" type="range" min="0" max="10" step="1" />
+                    <p>Duration</p>
+                    <input id="durationSlider" type="range" min="0" max="10" step="1" />
+                    <p>
+                        <button type="button">Create Strand</button>
+                    </p>
+                </div>
+
+                <div id="tab3" class="tab">
+                    <h3>Most Contagious Viruses</h3>
+                    <p> ~~ List of viruses</p>
+
+                </div>
             </div>
-            <div id="error"></div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

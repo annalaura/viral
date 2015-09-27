@@ -19,7 +19,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        console.log('aaaa');
         this.bindEvents();
     },
 
@@ -28,6 +27,15 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+        var rangeSlider = document.getElementById('rangeSlider');
+        var durationSlider = document.getElementById('durationSlider');
+        rangeSlider.addEventListener('change', function(e) {
+            console.log(e.target.value);
+            durationSlider.value = 10 - e.target.value;
+        });
+        durationSlider.addEventListener('change', function(e) {
+            rangeSlider.value = 10 - e.target.value;
+        });
         // document.addEventListener('deviceready', this.onDeviceReady, false);
         // app.receivedEvent('deviceready');
     },
